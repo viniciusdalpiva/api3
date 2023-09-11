@@ -3,8 +3,9 @@ package api3
 import groovy.json.JsonBuilder
 import groovyx.net.http.RESTClient
 
-class CidadeController {
+class  CidadeController {
     static responseFormats = ["json"]
+    def LogService
 
     def show(Long id) {
         try {
@@ -18,6 +19,10 @@ class CidadeController {
                     data response.data
                 }
                 render(contentType: 'application/json', text: jsonResponse.toString())
+
+                // Chamada correta para salvar o log
+                def retorno = LogService.salvarLog("Descrição do log")
+
             } else {
                 render(status: response.status, contentType: 'application/json') {
                     error: "Erro ao buscar a cidade na API2."
