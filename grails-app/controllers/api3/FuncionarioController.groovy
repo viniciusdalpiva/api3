@@ -81,7 +81,7 @@ class FuncionarioController {
 
     def delete(Long id) {
         if (request.method != "DELETE") {
-            response.setStatus(405) // Método não permitido
+            response.setStatus(405)
             render "Método não permitido para esta ação."
             return
         }
